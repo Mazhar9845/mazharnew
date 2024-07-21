@@ -22,10 +22,8 @@ stages:
     steps:
     - bash: echo Mohammed
 - stage: prod
-  dependsOn: 
-  - build   
-  - qa
+  dependsOn: qa
   jobs:
-    - job: qa
+    - job: qa1
       steps:
       - bash: echo Ayesha
