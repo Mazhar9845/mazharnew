@@ -1,0 +1,38 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: QABuild
+  jobs:
+    - deployment: QAdeployment
+      environment: QA
+      strategy:
+         runOnce:
+           deploy:
+             steps:
+               - script: echo "ALLAH is great"
+- stage: DevBuild
+  jobs:
+    - deployment: DevDeployment
+      environment: Dev
+      strategy: 
+       runOnce:
+         deploy:
+           steps:
+            - script: echo "ALLAH is greatest of ALL"
+- stage: Proddeploy
+  jobs:
+   - deployment: ProdDeployment
+     environment: Prod
+     strategy:
+       runOnce:
+         deploy:
+           steps:
+             - script: echo "ALLAH is most merciful"
+
+       
+        
