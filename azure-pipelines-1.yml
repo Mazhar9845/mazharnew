@@ -17,11 +17,13 @@ stages:
     - bash: echo ALLAH
 - stage: qa
   jobs:
-  - job: building
+  - job: stage
+    dependsOn: building
     steps:
     - bash: echo Mohammed
 - stage: prod
   jobs:
-    - job: building
+    - job: qa
+      dependsOn: stage, buildings
       steps:
       - bash: echo Ayesha
